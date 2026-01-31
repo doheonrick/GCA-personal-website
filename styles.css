@@ -124,7 +124,7 @@
   /* ===== Contact buttons ===== */
   .contact-btn {
     background-color: var(--accent);   /* basic background */
-    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 550;
     letter-spacing: 0.03em;
   }
