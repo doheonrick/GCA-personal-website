@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Portfolio Landing Page</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13c8ec",
+            "background-light": "#f6f8f8",
+            "background-dark": "#101f22",
+          },
+          fontFamily: { "display": ["Inter", "sans-serif"] },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body { font-family: "Inter", sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    }
+  </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d191b] dark:text-white transition-colors duration-300">
+
+  <!-- Sticky Navigation -->
+  <nav class="sticky top-0 z-50 w-full border-b border-[#e7f1f3] dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Minimal mark only -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="size-9 bg-primary rounded-lg flex items-center justify-center text-[#0d191b] group-hover:opacity-90 transition-opacity">
+          <span class="material-symbols-outlined">home</span>
+        </div>
+        <span class="sr-only">Home</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#about">About</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#skills">Skills</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#timeline">Timeline</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#beyond">Beyond</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#photos">Photos</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-[1100px] mx-auto px-6">
+
+    <!-- Hero -->
+    <section class="py-20 md:py-28">
+      <div class="relative overflow-hidden rounded-2xl bg-cover bg-center min-h-[560px] flex items-center justify-center p-8"
+           style='background-image: linear-gradient(rgba(16, 31, 34, 0.82), rgba(16, 31, 34, 0.82)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0Zu-5ZuNvZryahS30g6QXWGT36pgCdl_2ClChvUvyeBURMucA10XShJR-pE153Deg5KCMIurU382hHzjy5oentVuuLouVOeprBhCESWeJMM7RxDBrcDopcplC7GcwqDljrpEdVQt7q4FJefUBw0vDZHWrG4prOBwHAfsDBJmldXAmTpAOfTrSnov68SjHZRxCjEREj1Y8kCRib6hVJJ77A1LP0teXmzN7aNzmgCBKNuEeqxoyCe-EDtflHdKuWfo54hfYwFInRlA");'>
+
+        <div class="max-w-3xl text-center flex flex-col items-center gap-7">
+          <!-- Profile photo centered -->
+          <img
+            src="assets/profile.jpg"
+            alt="Profile photo"
+            class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover ring-4 ring-white/10 shadow-lg"
+          />
+
+          <h1 class="text-white text-4xl md:text-5xl font-black leading-tight tracking-tight">
+            UTD CS student building <br>reliable web products.
+          </h1>
+
+          <p class="text-white/80 text-base md:text-lg max-w-2xl">
+            Korean student in Dallas, <br>focused on web development and backend fundamentals.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="#skills" class="bg-primary text-[#0d191b] px-8 py-4 rounded-lg font-bold hover:scale-[1.03] transition-transform">
+              View Skills
+            </a>
+            <a href="#contact" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-all">
+              Contact
+            </a>
+          </div>
+
+          <a href="#about" class="mt-2 text-white/60 text-sm hover:text-white transition-colors underline-anim">
+            Scroll ↓
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="py-16" id="about">
+      <h2 class="text-3xl font-bold mb-10 px-2">About</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+        <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
+          <span class="material-symbols-outlined text-primary mb-4 text-4xl">explore</span>
+          <h3 class="text-lg font-bold mb-2">Location / Origin</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Korea → Dallas, TX</p>
+        </div>
+
+        <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
+          <span class="material-symbols-outlined text-primary mb-4 text-4xl">school</span>
+          <h3 class="text-lg font-bold mb-2">Major</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Computer Science(UTD)</p>
+        </div>
+
+        <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
+          <span class="material-symbols-outlined text-primary mb-4 text-4xl">code</span>
+          <h3 class="text-lg font-bold mb-2">Focus</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Web Dev / Backend</p>
+        </div>
+
+        <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
+          <span class="material-symbols-outlined text-primary mb-4 text-4xl">bolt</span>
+          <h3 class="text-lg font-bold mb-2">Values</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Discipline / Consistency<br>(Military / Practice)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="py-16 bg-primary/5 rounded-3xl p-10" id="skills">
+      <h2 class="text-3xl font-bold mb-10">Skills / Tech Stack</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-[#4c8d9a] mb-4">Frontend</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JavaScript</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-[#4c8d9a] mb-4">Backend</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">Node.js</span>
+              <span class="pill">Express</span>
+              <span class="pill learning">Learning: APIs / REST basics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-[#4c8d9a] mb-4">Tools</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">Git</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">VS Code</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-bold uppercase tracking-widest text-[#4c8d9a] mb-4">Languages</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">C</span>
+              <span class="pill">C++</span>
+              <span class="pill">Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-16 timeline" id="timeline">
+        <h2 class="text-3xl font-bold mb-10 px-2">Timeline</h2>
+    
+        <div class="space-y-4 px-2">
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">1999</span>
+                <span class="text-lg font-bold">Born (Seoul, KR)</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">April 2, 1999.</p>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">2007 ~ 2011</span>
+                <span class="text-lg font-bold">Early years (KR / US)</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <ul class="mt-4 text-[#4c8d9a] dark:text-gray-400 space-y-2">
+            <li>2007–2008: Yale Elementary (Seoul, KR)</li>
+            <li>2008–2009: Crescent Heights Elementary (WA, USA)</li>
+            <li>2009–2011: Yuldong Elementary (Gyeonggi-do, KR)</li>
+            </ul>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">2012 ~ 2017</span>
+                <span class="text-lg font-bold">Dream School (Seosan, KR)</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Middle, High school years in Seosan-si.</p>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">2020 ~ 2022</span>
+                <span class="text-lg font-bold">Military Service (KR)</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Staff Sergeant. Built discipline and leadership through service.</p>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">2022 ~ 2023</span>
+                <span class="text-lg font-bold">Startup Business</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Worked at Expaedu, explored product thinking.</p>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">2023 ~ 2025</span>
+                <span class="text-lg font-bold">Austin Community College (CS), TX</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Built CS fundamentals and prepared for transfer.</p>
+        </details>
+    
+        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+            <summary class="cursor-pointer flex items-center justify-between">
+            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
+                <span class="font-mono text-primary text-base whitespace-nowrap">Present</span>
+                <span class="text-lg font-bold">University of Texas at Dallas (CS), TX</span>
+            </div>
+            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
+            </summary>
+            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Continuing CS studies with a focus on building reliable web products.</p>
+        </details>
+        </div>
+    </section>
+
+    <!-- Beyond -->
+      <h2 class="text-3xl font-bold mb-10 px-2">Beyond Coding</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-2">
+        <div class="card-hover p-8 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10">
+          <div class="bg-primary/20 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-3xl">equalizer</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Guitar</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400">Consistent practice and team-based performance.</p>
+        </div>
+
+        <div class="card-hover p-8 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10">
+          <div class="bg-primary/20 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-3xl">fitness_center</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Workout</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400">Routine-driven and goal-oriented training.</p>
+        </div>
+
+        <div class="card-hover p-8 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10">
+          <div class="bg-primary/20 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+            <span class="material-symbols-outlined text-primary text-3xl">photo_camera</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Photography</h3>
+          <p class="text-[#4c8d9a] dark:text-gray-400">Capturing everyday moments and street scenes.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Photo Dump (Square carousel: 4 visible, move 1 at a time, infinite loop, arrows + drag) -->
+    <section class="py-16" id="photos">
+        <h2 class="text-3xl font-bold mb-10 px-2">Photo Dump</h2>
+    
+        <div class="px-2">
+        <div class="relative">
+    
+            <!-- Left button -->
+            <button
+            type="button"
+            class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition"
+            aria-label="Previous"
+            data-carousel-prev
+            >
+            <span class="text-xl font-bold">&lt;</span>
+            </button>
+    
+            <!-- Right button -->
+            <button
+            type="button"
+            class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition"
+            aria-label="Next"
+            data-carousel-next
+            >
+            <span class="text-xl font-bold">&gt;</span>
+            </button>
+    
+            <!-- Viewport -->
+            <div class="overflow-hidden select-none" data-carousel-viewport>
+            <!-- Track -->
+            <div class="flex gap-4 will-change-transform transition-transform duration-300 ease-out" data-carousel-track>
+    
+                <!-- Items (square thumbnails) -->
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/88/6f/82/886f82c8238e0a6b3e017fcfe0023618.jpg">
+                </div>
+    
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/c9/f7/18/c9f718683932276d341d6911a9a1099a.jpg">
+                </div>
+    
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/b1/19/29/b11929e5c26c0bd4d054d465d94cd240.jpg">
+                </div>
+    
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/d5/19/02/d519027d6a5474e372e0f3d4b7ba1044.jpg">
+                </div>
+    
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/29/e2/da/29e2da4631140a1279fb64716b7a868b.jpg">
+                </div>
+    
+                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/72/6c/d8/726cd8fedc53f3ba1a3fb4f48936434e.jpg">
+                </div>
+    
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+    <style>
+        /* 4 visible items + 3 gaps(1rem each) => each item width is calc((100% - 3rem) / 4) */
+        .carousel-item
+        {
+        width: calc((100% - 3rem) / 4);
+        aspect-ratio: 1 / 1; /* square */
+        }
+    </style>
+    
+    <script>
+        (function ()
+        {
+        const viewport = document.querySelector("[data-carousel-viewport]");
+        const track = document.querySelector("[data-carousel-track]");
+        const btnPrev = document.querySelector("[data-carousel-prev]");
+        const btnNext = document.querySelector("[data-carousel-next]");
+    
+        if (!viewport || !track)
+        {
+            return;
+        }
+    
+        const GAP_PX = 16; // gap-4
+        const visible = 4;
+    
+        // Clone edges for true infinite loop (next from last -> first seamlessly)
+        const originals = Array.from(track.children);
+        const total = originals.length;
+    
+        if (total === 0)
+        {
+            return;
+        }
+    
+        // Clone last (visible) items to the front, and first (visible) items to the end
+        const headClones = originals.slice(0, visible).map(function (node) { return node.cloneNode(true); });
+        const tailClones = originals.slice(-visible).map(function (node) { return node.cloneNode(true); });
+    
+        tailClones.forEach(function (n)
+        {
+            track.insertBefore(n, track.firstChild);
+        });
+    
+        headClones.forEach(function (n)
+        {
+            track.appendChild(n);
+        });
+    
+        // Now track children include: [tailClones][originals][headClones]
+        const items = Array.from(track.children);
+    
+        function itemStepPx()
+        {
+            const w = items[0].getBoundingClientRect().width;
+            return w + GAP_PX;
+        }
+    
+        // Start at the first original item (offset by visible clones at the front)
+        let index = visible;
+    
+        function setTransform(x, animate)
+        {
+            if (!animate)
+            {
+            track.classList.remove("transition-transform", "duration-300", "ease-out");
+            }
+            else
+            {
+            track.classList.add("transition-transform", "duration-300", "ease-out");
+            }
+    
+            track.style.transform = "translateX(" + x + "px)";
+        }
+    
+        function render(animate)
+        {
+            const x = -index * itemStepPx();
+            setTransform(x, animate);
+        }
+    
+        // After animation ends, snap instantly if we are in cloned area
+        track.addEventListener("transitionend", function ()
+        {
+            // If we've moved past the last original item into head clones
+            if (index >= visible + total)
+            {
+            index = visible; // jump back to first original
+            render(false);
+            }
+    
+            // If we've moved before the first original item into tail clones
+            if (index < visible)
+            {
+            index = visible + total - 1; // jump to last original
+            render(false);
+            }
+        });
+    
+        function next()
+        {
+            index += 1;
+            render(true);
+        }
+    
+        function prev()
+        {
+            index -= 1;
+            render(true);
+        }
+    
+        btnNext.addEventListener("click", function ()
+        {
+            next();
+        });
+    
+        btnPrev.addEventListener("click", function ()
+        {
+            prev();
+        });
+    
+        // Initial render
+        render(false);
+    
+        // Re-render on resize (because width changes)
+        window.addEventListener("resize", function ()
+        {
+            render(false);
+        });
+    
+        // Drag / swipe
+        let dragging = false;
+        let startX = 0;
+        let startTranslate = 0;
+    
+        function currentTranslateX()
+        {
+            const m = window.getComputedStyle(track).transform;
+            if (!m || m === "none")
+            {
+            return 0;
+            }
+    
+            const match = m.match(/matrix\((.+)\)/);
+            if (!match)
+            {
+            return 0;
+            }
+    
+            const parts = match[1].split(",").map(function (v) { return parseFloat(v); });
+            return parts[4] || 0;
+        }
+    
+        viewport.addEventListener("pointerdown", function (e)
+        {
+            dragging = true;
+            viewport.setPointerCapture(e.pointerId);
+            startX = e.clientX;
+            startTranslate = currentTranslateX();
+            track.classList.remove("transition-transform", "duration-300", "ease-out");
+        });
+    
+        viewport.addEventListener("pointermove", function (e)
+        {
+            if (!dragging)
+            {
+            return;
+            }
+    
+            const dx = e.clientX - startX;
+            setTransform(startTranslate + dx, false);
+        });
+    
+        viewport.addEventListener("pointerup", function (e)
+        {
+            if (!dragging)
+            {
+            return;
+            }
+    
+            dragging = false;
+    
+            const dx = e.clientX - startX;
+            const threshold = itemStepPx() * 0.2;
+    
+            if (dx < -threshold)
+            {
+            next();
+            }
+            else if (dx > threshold)
+            {
+            prev();
+            }
+            else
+            {
+            render(true);
+            }
+        });
+    
+        viewport.addEventListener("pointercancel", function ()
+        {
+            dragging = false;
+            render(true);
+        });
+        })();
+    </script>
+
+    <!-- Contact -->
+    <footer class="py-20 border-t border-[#e7f1f3] dark:border-white/10" id="contact">
+      <div class="flex flex-col items-center text-center px-2">
+        <h2 class="text-4xl font-bold mb-10 px-2">Contact</h2>
+
+        <div class="flex flex-wrap gap-3 justify-center mb-8">
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
+             href="mailto:rlaehgjs@gmail.com">
+            Email
+          </a>
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
+             href="YOUR_LINKEDIN_URL_HERE" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
+             href="YOUR_GITHUB_URL_HERE" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+
+        <p class="text-[#4c8d9a] dark:text-gray-400 mb-10 max-w-md">
+            Feel free to reach out for questions, or opportunities.
+        </p>
+
+        <div class="mt-12 text-sm text-[#4c8d9a] dark:text-gray-500">
+          © 2026 Do Heon Kim
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

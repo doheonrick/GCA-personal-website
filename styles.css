@@ -1,0 +1,154 @@
+/* styles.css - custom CSS layered on top of Tailwind */
+
+/* ===== Theme tokens ===== */
+:root {
+    --accent: #13c8ec;
+    --bg: #f6f8f8;
+    --text: #0d191b;
+    --muted: #4c8d9a;
+    --border: #cfe3e7;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(13, 25, 27, 0.08);
+  }
+  
+  /* ===== Base ===== */
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+  }
+  
+  /* ===== Accessibility focus ===== */
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent), transparent 60%);
+    outline-offset: 3px;
+  }
+  
+  /* About 섹션만 파란 배경/띠 제거 */
+  #about {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
+  }
+  
+  /* ===== Nav underline animation ===== */
+  .underline-anim {
+    position: relative;
+    text-decoration: none;
+  }
+  .underline-anim::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+    opacity: 0.9;
+  }
+  .underline-anim:hover::after,
+  .underline-anim:focus-visible::after {
+    transform: scaleX(1);
+  }
+  
+  /* ===== Section highlight when jumped via anchors ===== */
+  section:target,
+  footer:target {
+    scroll-margin-top: 90px;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 85%);
+    border-radius: var(--radius);
+  }
+  
+  /* ===== Unified card hover ===== */
+  .card-hover {
+    border-radius: var(--radius);
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: color-mix(in srgb, var(--accent), var(--border) 60%);
+  }
+  
+  /* ===== Pills (skills tags) ===== */
+  .pill {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.75);
+    transition: transform 160ms ease, background-color 160ms ease;
+  }
+  .pill:hover {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--accent), white 92%);
+  }
+  .pill.learning {
+    border-style: dashed;
+    border-color: color-mix(in srgb, var(--accent), var(--border) 55%);
+    background: transparent;
+  }
+  
+  /* ===== Photo hover caption ===== */
+  .photo-tile {
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .photo-caption {
+    transform: translateY(8px);
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+  .photo-tile:hover .photo-caption {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+  
+  /* ===== Timeline details (small polish) ===== */
+  .timeline details summary {
+    list-style: none;
+  }
+  .timeline details summary::-webkit-details-marker {
+    display: none;
+  }
+  .timeline details[open] {
+    border-color: color-mix(in srgb, var(--accent), var(--border) 70%);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 88%);
+  }
+  
+  /* ===== Contact buttons ===== */
+  .contact-btn {
+    background-color: var(--accent);   /* basic background */
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 550;
+    letter-spacing: 0.03em;
+  }
+  
+  .contact-btn:hover {
+    background-color: #10b4d4;        
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(13, 25, 27, 0.25);
+  }
+  
+  /* Dark mode */
+  .dark .contact-btn {
+    background-color: var(--accent);
+    color: #0b1416;
+  }
+  
+  .dark .contact-btn:hover {
+    background-color: #10b4d4;
+  }
+  /* ===== Reduce motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
