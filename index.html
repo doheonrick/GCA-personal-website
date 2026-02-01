@@ -48,7 +48,7 @@
   <nav class="sticky top-0 z-50 w-full border-b border-[#e7f1f3] dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
     <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center">
       
-      <!-- 왼쪽: 로고(집 아이콘) 그대로 -->
+      <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
         <div class="size-9 bg-primary rounded-lg flex items-center justify-center text-[#0d191b] group-hover:opacity-90 transition-opacity">
           <span class="material-symbols-outlined">home</span>
@@ -56,8 +56,23 @@
         <span class="sr-only">Home</span>
       </a>
   
-      <!-- 가운데: 메뉴들 -->
+      <!-- Headers -->
       <div class="hidden md:flex items-center gap-12 flex-1 justify-center">
+        <!-- Mobile menu button -->
+            <button type="button" class="ml-auto md:hidden inline-flex items-center justify-center rounded-lg border border-black/10 dark:border-white/10 w-10 h-10 hover:bg-black/5 dark:hover:bg-white/10 transition" aria-label="Open menu" data-mobile-menu-btn>
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        <!-- Mobile menu -->
+        <div class="md:hidden max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pb-4 hidden" data-mobile-menu>
+            <div class="grid gap-2 pt-3">
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#skills">Skills</a>
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#timeline">Timeline</a>
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#beyond">Beyond</a>
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#photos">Photos</a>
+            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+            </div>
+        </div>
         <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#about">About</a>
         <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#skills">Skills</a>
         <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#timeline">Timeline</a>
@@ -69,11 +84,11 @@
     </div>
   </nav>
 
-  <main class="max-w-[1100px] mx-auto px-6">
+  <main class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Hero -->
     <section class="py-20 md:py-28">
-      <div class="relative overflow-hidden rounded-2xl bg-cover bg-center min-h-[560px] flex items-center justify-center p-8"
+      <div class="relative overflow-hidden rounded-2xl bg-cover bg-center min-h-[420px] sm:min-h-[520px] flex items-center justify-center p-6 sm:p-8"
            style='background-image: linear-gradient(rgba(16, 31, 34, 0.82), rgba(16, 31, 34, 0.82)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0Zu-5ZuNvZryahS30g6QXWGT36pgCdl_2ClChvUvyeBURMucA10XShJR-pE153Deg5KCMIurU382hHzjy5oentVuuLouVOeprBhCESWeJMM7RxDBrcDopcplC7GcwqDljrpEdVQt7q4FJefUBw0vDZHWrG4prOBwHAfsDBJmldXAmTpAOfTrSnov68SjHZRxCjEREj1Y8kCRib6hVJJ77A1LP0teXmzN7aNzmgCBKNuEeqxoyCe-EDtflHdKuWfo54hfYwFInRlA");'>
 
         <div class="max-w-3xl text-center flex flex-col items-center gap-7">
@@ -81,10 +96,10 @@
           <img
             src="assets/profile.jpg"
             alt="Profile photo"
-            class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover ring-4 ring-white/10 shadow-lg"
+            class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover ring-4 ring-white/10 shadow-lg"
           />
 
-          <h1 class="text-white text-6xl md:text-6xl font-bold leading-tight tracking-wide">
+          <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-wide">
             Do Heon Kim
           </h1>
 
@@ -109,7 +124,7 @@
     </section>
 
     <!-- About -->
-    <section class="py-16" id="about">
+    <section class="py-12 sm:py-16" id="about">
       <h2 class="text-3xl font-bold mb-10 px-2">About</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
@@ -140,7 +155,7 @@
     </section>
 
     <!-- Skills -->
-    <section class="py-16 bg-primary/5 rounded-3xl p-10" id="skills">
+    <section class="py-12 sm:py-16 bg-primary/5 rounded-3xl p-10" id="skills">
       <h2 class="text-3xl font-bold mb-10">Skills / Tech Stack</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -187,7 +202,7 @@
     </section>
 
     <!-- Timeline -->
-    <section class="py-16 timeline" id="timeline">
+    <section class="py-12 sm:py-16 timeline" id="timeline">
         <h2 class="text-3xl font-bold mb-10 px-2">Timeline</h2>
     
         <div class="space-y-4 px-2">
@@ -275,9 +290,10 @@
     </section>
 
     <!-- Beyond -->
-      <h2 class="text-3xl font-bold mb-10 px-2">Beyond Coding</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-2">
+    <section class="py-12 sm:py-16" id="beyond">
+    <h2 class="text-3xl font-bold mb-10 px-2">Beyond Coding</h2>
+  
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-2">
         <div class="card-hover p-8 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10">
           <div class="bg-primary/20 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-primary text-3xl">equalizer</span>
@@ -305,7 +321,7 @@
     </section>
     
     <!-- Photo Dump (Square carousel: 4 visible, move 1 at a time, infinite loop, arrows + drag) -->
-    <section class="py-16" id="photos">
+    <section class="py-12 sm:py-16" id="photos">
         <h2 class="text-3xl font-bold mb-10 px-2">Photo Dump</h2>
     
         <div class="px-2">
@@ -371,207 +387,195 @@
         /* 4 visible items + 3 gaps(1rem each) => each item width is calc((100% - 3rem) / 4) */
         .carousel-item
         {
-        width: calc((100% - 3rem) / 4);
-        aspect-ratio: 1 / 1; /* square */
+          aspect-ratio: 1 / 1;
+        }
+      
+        /* mobile: 1 item */
+        .carousel-item
+        {
+          width: 100%;
+        }
+      
+        /* sm: 2 items (gap 1rem => 16px, 1 gap) */
+        @media (min-width: 640px)
+        {
+          .carousel-item
+          {
+            width: calc((100% - 1rem) / 2);
+          }
+        }
+      
+        /* lg: 4 items (gap 1rem, 3 gaps) */
+        @media (min-width: 1024px)
+        {
+          .carousel-item
+          {
+            width: calc((100% - 3rem) / 4);
+          }
         }
     </style>
     
     <script>
         (function ()
         {
-        const viewport = document.querySelector("[data-carousel-viewport]");
-        const track = document.querySelector("[data-carousel-track]");
-        const btnPrev = document.querySelector("[data-carousel-prev]");
-        const btnNext = document.querySelector("[data-carousel-next]");
-    
-        if (!viewport || !track)
-        {
-            return;
-        }
-    
-        const GAP_PX = 16; // gap-4
-        const visible = 4;
-    
-        // Clone edges for true infinite loop (next from last -> first seamlessly)
-        const originals = Array.from(track.children);
-        const total = originals.length;
-    
-        if (total === 0)
-        {
-            return;
-        }
-    
-        // Clone last (visible) items to the front, and first (visible) items to the end
-        const headClones = originals.slice(0, visible).map(function (node) { return node.cloneNode(true); });
-        const tailClones = originals.slice(-visible).map(function (node) { return node.cloneNode(true); });
-    
-        tailClones.forEach(function (n)
-        {
-            track.insertBefore(n, track.firstChild);
-        });
-    
-        headClones.forEach(function (n)
-        {
-            track.appendChild(n);
-        });
-    
-        // Now track children include: [tailClones][originals][headClones]
-        const items = Array.from(track.children);
-    
-        function itemStepPx()
-        {
-            const w = items[0].getBoundingClientRect().width;
-            return w + GAP_PX;
-        }
-    
-        // Start at the first original item (offset by visible clones at the front)
-        let index = visible;
-    
-        function setTransform(x, animate)
-        {
-            if (!animate)
+          const viewport = document.querySelector("[data-carousel-viewport]");
+          const track = document.querySelector("[data-carousel-track]");
+          const btnPrev = document.querySelector("[data-carousel-prev]");
+          const btnNext = document.querySelector("[data-carousel-next]");
+        
+          if (!viewport || !track) return;
+        
+          const GAP_PX = 16; // gap-4
+        
+          function getVisible()
+          {
+            const w = window.innerWidth;
+            if (w >= 1024) return 4;   // lg+
+            if (w >= 640) return 2;    // sm+
+            return 1;                  // mobile
+          }
+        
+          function setup()
+          {
+            // reset track to originals only
+            const all = Array.from(track.children);
+            all.forEach(function (n)
             {
-            track.classList.remove("transition-transform", "duration-300", "ease-out");
+              if (n.dataset.clone === "1") n.remove();
+            });
+        
+            const originals = Array.from(track.children);
+            const total = originals.length;
+            if (total === 0) return;
+        
+            const visible = getVisible();
+        
+            // remove old clones if any
+            originals.forEach(function (n) { n.dataset.clone = ""; });
+        
+            // clone edges
+            const headClones = originals.slice(0, visible).map(function (node)
+            {
+              const c = node.cloneNode(true);
+              c.dataset.clone = "1";
+              return c;
+            });
+        
+            const tailClones = originals.slice(-visible).map(function (node)
+            {
+              const c = node.cloneNode(true);
+              c.dataset.clone = "1";
+              return c;
+            });
+        
+            tailClones.forEach(function (n) { track.insertBefore(n, track.firstChild); });
+            headClones.forEach(function (n) { track.appendChild(n); });
+        
+            const items = Array.from(track.children);
+        
+            function itemStepPx()
+            {
+              const w = items[0].getBoundingClientRect().width;
+              return w + GAP_PX;
             }
-            else
+        
+            let index = visible;
+        
+            function setTransform(x, animate)
             {
-            track.classList.add("transition-transform", "duration-300", "ease-out");
+              if (!animate) track.classList.remove("transition-transform", "duration-300", "ease-out");
+              else track.classList.add("transition-transform", "duration-300", "ease-out");
+        
+              track.style.transform = "translateX(" + x + "px)";
             }
-    
-            track.style.transform = "translateX(" + x + "px)";
-        }
-    
-        function render(animate)
-        {
-            const x = -index * itemStepPx();
-            setTransform(x, animate);
-        }
-    
-        // After animation ends, snap instantly if we are in cloned area
-        track.addEventListener("transitionend", function ()
-        {
-            // If we've moved past the last original item into head clones
-            if (index >= visible + total)
+        
+            function render(animate)
             {
-            index = visible; // jump back to first original
+              setTransform(-index * itemStepPx(), animate);
+            }
+        
+            track.ontransitionend = function ()
+            {
+              if (index >= visible + total)
+              {
+                index = visible;
+                render(false);
+              }
+        
+              if (index < visible)
+              {
+                index = visible + total - 1;
+                render(false);
+              }
+            };
+        
+            function next() { index += 1; render(true); }
+            function prev() { index -= 1; render(true); }
+        
+            if (btnNext) btnNext.onclick = next;
+            if (btnPrev) btnPrev.onclick = prev;
+        
             render(false);
-            }
-    
-            // If we've moved before the first original item into tail clones
-            if (index < visible)
+        
+            // drag/swipe (reuse your logic, but with current index/render)
+            let dragging = false;
+            let startX = 0;
+            let startTranslate = 0;
+        
+            function currentTranslateX()
             {
-            index = visible + total - 1; // jump to last original
-            render(false);
+              const m = window.getComputedStyle(track).transform;
+              if (!m || m === "none") return 0;
+              const match = m.match(/matrix\((.+)\)/);
+              if (!match) return 0;
+              const parts = match[1].split(",").map(function (v) { return parseFloat(v); });
+              return parts[4] || 0;
             }
-        });
-    
-        function next()
-        {
-            index += 1;
-            render(true);
-        }
-    
-        function prev()
-        {
-            index -= 1;
-            render(true);
-        }
-    
-        btnNext.addEventListener("click", function ()
-        {
-            next();
-        });
-    
-        btnPrev.addEventListener("click", function ()
-        {
-            prev();
-        });
-    
-        // Initial render
-        render(false);
-    
-        // Re-render on resize (because width changes)
-        window.addEventListener("resize", function ()
-        {
-            render(false);
-        });
-    
-        // Drag / swipe
-        let dragging = false;
-        let startX = 0;
-        let startTranslate = 0;
-    
-        function currentTranslateX()
-        {
-            const m = window.getComputedStyle(track).transform;
-            if (!m || m === "none")
+        
+            viewport.onpointerdown = function (e)
             {
-            return 0;
-            }
-    
-            const match = m.match(/matrix\((.+)\)/);
-            if (!match)
+              dragging = true;
+              viewport.setPointerCapture(e.pointerId);
+              startX = e.clientX;
+              startTranslate = currentTranslateX();
+              track.classList.remove("transition-transform", "duration-300", "ease-out");
+            };
+        
+            viewport.onpointermove = function (e)
             {
-            return 0;
-            }
-    
-            const parts = match[1].split(",").map(function (v) { return parseFloat(v); });
-            return parts[4] || 0;
-        }
-    
-        viewport.addEventListener("pointerdown", function (e)
-        {
-            dragging = true;
-            viewport.setPointerCapture(e.pointerId);
-            startX = e.clientX;
-            startTranslate = currentTranslateX();
-            track.classList.remove("transition-transform", "duration-300", "ease-out");
-        });
-    
-        viewport.addEventListener("pointermove", function (e)
-        {
-            if (!dragging)
+              if (!dragging) return;
+              const dx = e.clientX - startX;
+              setTransform(startTranslate + dx, false);
+            };
+        
+            viewport.onpointerup = function (e)
             {
-            return;
-            }
-    
-            const dx = e.clientX - startX;
-            setTransform(startTranslate + dx, false);
-        });
-    
-        viewport.addEventListener("pointerup", function (e)
-        {
-            if (!dragging)
-            {
-            return;
-            }
-    
-            dragging = false;
-    
-            const dx = e.clientX - startX;
-            const threshold = itemStepPx() * 0.2;
-    
-            if (dx < -threshold)
-            {
-            next();
-            }
-            else if (dx > threshold)
-            {
-            prev();
-            }
-            else
-            {
-            render(true);
-            }
-        });
-    
-        viewport.addEventListener("pointercancel", function ()
-        {
-            dragging = false;
-            render(true);
-        });
+              if (!dragging) return;
+              dragging = false;
+        
+              const dx = e.clientX - startX;
+              const threshold = itemStepPx() * 0.2;
+        
+              if (dx < -threshold) next();
+              else if (dx > threshold) prev();
+              else render(true);
+            };
+        
+            viewport.onpointercancel = function () { dragging = false; render(true); };
+          }
+        
+          // initial
+          setup();
+        
+          // rebuild on resize (because visible changes)
+          let t = null;
+          window.addEventListener("resize", function ()
+          {
+            clearTimeout(t);
+            t = setTimeout(function () { setup(); }, 150);
+          });
         })();
-    </script>
+        </script>
 
     <!-- Contact -->
     <footer class="py-20 border-t border-[#e7f1f3] dark:border-white/10" id="contact">
@@ -604,5 +608,27 @@
     </footer>
 
   </main>
+    <script>
+        (function ()
+        {
+        const btn = document.querySelector("[data-mobile-menu-btn]");
+        const menu = document.querySelector("[data-mobile-menu]");
+        if (!btn || !menu) return;
+    
+        btn.addEventListener("click", function ()
+        {
+            menu.classList.toggle("hidden");
+        });
+    
+        // close on link click
+        menu.querySelectorAll("a").forEach(function (a)
+        {
+            a.addEventListener("click", function ()
+            {
+            menu.classList.add("hidden");
+            });
+        });
+        })();
+    </script>
 </body>
 </html>
