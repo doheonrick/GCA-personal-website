@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# 에디터 설정
+.vscode/
+.idea/
+
+# 의존성 (나중에 Node 프로젝트 붙일 때)
+node_modules/
+.env
