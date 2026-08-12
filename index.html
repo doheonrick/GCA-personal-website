@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Portfolio Landing Page</title>
+  <title>Do Heon Kim | Backend & Web Development</title>
+
+  <!-- ✅ 수정: SEO / 링크 공유용 메타태그 추가 -->
+  <meta name="description" content="Do Heon Kim - CS student at UT Dallas. Learning web development and backend fundamentals." />
+  <meta property="og:title" content="Do Heon Kim | Backend & Web Development" />
+  <meta property="og:description" content="CS student at UT Dallas. Learning web development and backend fundamentals." />
+  <meta property="og:type" content="website" />
+
+  <!-- ✅ 수정: 다크모드 깜빡임(FOUC) 방지 - CSS보다 먼저 실행되어야 함 -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link rel="stylesheet" href="styles.css" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
-  
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -34,116 +46,130 @@
     }
   </script>
 
-  <style>
-    body { font-family: "Inter", sans-serif; }
-    .material-symbols-outlined {
-      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- ✅ 수정: styles.css를 Tailwind 뒤에 로드해야 우리 CSS가 우선 적용됨 -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-[#0d191b] dark:text-white transition-colors duration-300">
 
-  <!-- Sticky Navigation -->
+  <!-- ================== NAVIGATION ================== -->
+  <!-- ✅ 수정: 구조 전면 재작성
+       - 중복 Resume 링크 2개 제거
+       - 모바일 버튼을 'hidden md:flex' 부모 밖으로 꺼냄 (안 보이던 버그)
+       - 모바일 메뉴를 h-16 바 '밖'으로 이동
+       - 다크모드 토글 추가 -->
   <nav class="sticky top-0 z-50 w-full border-b border-[#e7f1f3] dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-    <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center">
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="resume.html">Resume</a>
-        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="resume.html">Resume</a>
-      
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 group">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 h-16 flex items-center gap-3">
+
+      <!-- 1. 로고 -->
+      <a href="index.html" class="flex items-center gap-3 group shrink-0">
         <div class="size-9 bg-primary rounded-lg flex items-center justify-center text-[#0d191b] group-hover:opacity-90 transition-opacity">
           <span class="material-symbols-outlined">home</span>
         </div>
         <span class="sr-only">Home</span>
       </a>
-  
-      <!-- Headers -->
-      <div class="hidden md:flex items-center gap-12 flex-1 justify-center">
-        <!-- Mobile menu button -->
-            <button type="button" class="ml-auto md:hidden inline-flex items-center justify-center rounded-lg border border-black/10 dark:border-white/10 w-10 h-10 hover:bg-black/5 dark:hover:bg-white/10 transition" aria-label="Open menu" data-mobile-menu-btn>
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        <!-- Mobile menu -->
-        <div class="md:hidden max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pb-4 hidden" data-mobile-menu>
-            <div class="grid gap-2 pt-3">
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#skills">Skills</a>
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#timeline">Timeline</a>
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#beyond">Beyond</a>
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#photos">Photos</a>
-            <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
-            </div>
-        </div>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#about">About</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#skills">Skills</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#timeline">Timeline</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#beyond">Beyond</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#photos">Photos</a>
-        <a class="text-sm font-medium hover:text-primary transition-colors nav-link underline-anim" href="#contact">Contact</a>
+
+      <!-- 2. 데스크탑 메뉴 -->
+      <div class="hidden md:flex items-center gap-7 flex-1 justify-center">
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#about">About</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#projects">Projects</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#skills">Skills</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#timeline">Timeline</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#photos">Photos</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="#contact">Contact</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors underline-anim" href="resume.html">Resume</a>
       </div>
-  
+
+      <!-- 3. 다크모드 토글 -->
+      <button type="button" data-theme-toggle
+        class="ml-auto md:ml-0 shrink-0 inline-flex items-center justify-center rounded-lg border border-black/10 dark:border-white/10 w-10 h-10 hover:bg-black/5 dark:hover:bg-white/10 transition"
+        aria-label="Toggle dark mode">
+        <span class="material-symbols-outlined text-[20px] dark:hidden">dark_mode</span>
+        <span class="material-symbols-outlined text-[20px] hidden dark:inline">light_mode</span>
+      </button>
+
+      <!-- 4. 모바일 햄버거 버튼 -->
+      <button type="button" data-mobile-menu-btn
+        class="md:hidden shrink-0 inline-flex items-center justify-center rounded-lg border border-black/10 dark:border-white/10 w-10 h-10 hover:bg-black/5 dark:hover:bg-white/10 transition"
+        aria-label="Open menu" aria-expanded="false">
+        <span class="material-symbols-outlined text-[20px]">menu</span>
+      </button>
+    </div>
+
+    <!-- 5. 모바일 펼침 메뉴 (h-16 바 바깥) -->
+    <div class="md:hidden hidden border-t border-[#e7f1f3] dark:border-white/10" data-mobile-menu>
+      <div class="max-w-[1100px] mx-auto px-4 sm:px-6 py-3 grid gap-1">
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#about">About</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#projects">Projects</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#skills">Skills</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#timeline">Timeline</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#photos">Photos</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
+        <a class="py-2 text-sm font-medium hover:text-primary transition-colors" href="resume.html">Resume</a>
+      </div>
     </div>
   </nav>
 
   <main class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Hero -->
-    <section class="py-20 md:py-28">
-      <div class="relative overflow-hidden rounded-2xl bg-cover bg-center min-h-[420px] sm:min-h-[520px] flex items-center justify-center p-6 sm:p-8"
-           style='background-image: linear-gradient(rgba(16, 31, 34, 0.82), rgba(16, 31, 34, 0.82)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0Zu-5ZuNvZryahS30g6QXWGT36pgCdl_2ClChvUvyeBURMucA10XShJR-pE153Deg5KCMIurU382hHzjy5oentVuuLouVOeprBhCESWeJMM7RxDBrcDopcplC7GcwqDljrpEdVQt7q4FJefUBw0vDZHWrG4prOBwHAfsDBJmldXAmTpAOfTrSnov68SjHZRxCjEREj1Y8kCRib6hVJJ77A1LP0teXmzN7aNzmgCBKNuEeqxoyCe-EDtflHdKuWfo54hfYwFInRlA");'>
+    <!-- ================== HERO ================== -->
+    <section class="py-16 md:py-24">
+      <div class="hero-bg relative overflow-hidden rounded-2xl bg-cover bg-center min-h-[420px] sm:min-h-[520px] flex items-center justify-center p-6 sm:p-8">
 
         <div class="max-w-3xl text-center flex flex-col items-center gap-7">
-          <!-- Profile photo centered -->
           <img
             src="assets/profile.jpg"
-            alt="Profile photo"
-            class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover ring-4 ring-white/10 shadow-lg"
+            alt="Do Heon Kim"
+            class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover ring-4 ring-white/20 shadow-lg"
           />
 
           <h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-wide">
             Do Heon Kim
           </h1>
 
+          <!-- ✅ 수정: 한 줄짜리 소개를 조금 더 구체적으로.
+               "무엇을 배우는 중"보다 "무엇을 만드는 사람"이 더 강하게 읽혀. -->
           <p class="text-white/80 text-base md:text-lg max-w-2xl">
-            Learning web development and backend fundamentals.
+            CS student at UT Dallas, building backends with Node.js and Express.
           </p>
 
-          <div class="flex flex-wrap gap-4 justify-center">
-            <a href="#skills" class="bg-primary text-[#0d191b] px-8 py-4 rounded-lg font-bold hover:scale-[1.03] transition-transform">
-              View Skills
+          <div class="flex flex-wrap gap-3 sm:gap-4 justify-center">
+            <a href="#projects" class="bg-primary text-[#0d191b] px-7 py-3.5 rounded-lg font-bold hover:scale-[1.03] transition-transform">
+              View Projects
             </a>
-            <a href="#contact" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-all">
+            <a href="resume.html" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-7 py-3.5 rounded-lg font-bold hover:bg-white/20 transition-all">
+              Resume
+            </a>
+            <a href="#contact" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-7 py-3.5 rounded-lg font-bold hover:bg-white/20 transition-all">
               Contact
             </a>
-
-            <a href="resume.html" class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-all">
-                Resume
-              </a>
           </div>
 
-          <a href="#about" class="mt-2 text-white/60 text-sm hover:text-white transition-colors underline-anim">
+          <a href="#about" class="mt-2 text-white/60 text-sm hover:text-white transition-colors">
             Scroll ↓
           </a>
         </div>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- ================== ABOUT ================== -->
     <section class="py-12 sm:py-16" id="about">
       <h2 class="text-3xl font-bold mb-10 px-2">About</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
         <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
           <span class="material-symbols-outlined text-primary mb-4 text-4xl">explore</span>
-          <h3 class="text-lg font-bold mb-2">Location / Origin</h3>
+          <h3 class="text-lg font-bold mb-2">Location</h3>
           <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Korea → Dallas, TX</p>
         </div>
 
         <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
           <span class="material-symbols-outlined text-primary mb-4 text-4xl">school</span>
           <h3 class="text-lg font-bold mb-2">Major</h3>
-          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Computer Science(UTD)</p>
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm">Computer Science (UTD)</p>
         </div>
 
         <div class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col min-h-[160px]">
@@ -160,11 +186,118 @@
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="py-12 sm:py-16 bg-primary/5 rounded-3xl p-10" id="skills">
+    <!-- ================== PROJECTS ================== -->
+    <!-- ✅ 신규: 포트폴리오에서 제일 중요한 섹션.
+         아래 카드 3개의 TODO를 네 실제 프로젝트로 채워줘.
+         아직 프로젝트가 없으면, 하나 만들고 나서 이 섹션을 공개하는 걸 추천해. -->
+    <section class="py-12 sm:py-16" id="projects">
+      <h2 class="text-3xl font-bold mb-3 px-2">Projects</h2>
+      <p class="text-[#4c8d9a] dark:text-gray-400 mb-10 px-2">
+        Things I built to learn how the backend actually works.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
+
+        <!-- ---------- 프로젝트 카드 1 ---------- -->
+        <article class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="text-xl font-bold">
+              <!-- TODO: 프로젝트 이름 -->URL Shortener
+            </h3>
+            <span class="text-xs font-mono text-[#4c8d9a] dark:text-gray-500 whitespace-nowrap mt-1.5">2026</span>
+          </div>
+
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+            <!-- TODO: 2~3줄.
+                 나쁜 예: "Node.js로 URL 단축기를 만들었습니다."
+                 좋은 예: "같은 URL이 두 번 저장되는 문제를 해결하려고
+                          단축 코드 대신 원본 URL에 unique 인덱스를 걸었다." -->
+            A REST API that turns long URLs into short codes and redirects them.
+            Built to understand routing, status codes, and how a database index
+            prevents duplicate records.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="pill pill-sm">Node.js</span>
+            <span class="pill pill-sm">Express</span>
+            <span class="pill pill-sm">SQLite</span>
+          </div>
+
+          <div class="flex flex-wrap gap-4 text-sm font-semibold">
+            <!-- TODO: 실제 저장소 주소로 교체 -->
+            <a href="https://github.com/doheonrick" target="_blank" rel="noreferrer"
+               class="text-primary hover:underline">GitHub →</a>
+            <!-- 배포 안 했으면 이 줄은 지워도 됨 -->
+            <a href="#" target="_blank" rel="noreferrer"
+               class="text-primary hover:underline">Live demo →</a>
+          </div>
+        </article>
+
+        <!-- ---------- 프로젝트 카드 2 ---------- -->
+        <article class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="text-xl font-bold">
+              <!-- TODO -->Personal Website
+            </h3>
+            <span class="text-xs font-mono text-[#4c8d9a] dark:text-gray-500 whitespace-nowrap mt-1.5">2026</span>
+          </div>
+
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+            <!-- TODO -->
+            This site. Hand-written HTML and CSS with a custom infinite carousel
+            and a dark mode that remembers your choice — no framework, so I had to
+            understand every line.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="pill pill-sm">HTML</span>
+            <span class="pill pill-sm">Tailwind</span>
+            <span class="pill pill-sm">JavaScript</span>
+          </div>
+
+          <div class="flex flex-wrap gap-4 text-sm font-semibold">
+            <a href="https://github.com/doheonrick/GCA-personal-website" target="_blank" rel="noreferrer"
+               class="text-primary hover:underline">GitHub →</a>
+          </div>
+        </article>
+
+        <!-- ---------- 프로젝트 카드 3 (선택) ----------
+             카드가 2개뿐이면 이 블록은 통째로 지워도 돼.
+             빈 카드를 남겨두는 것보다 없는 게 나아. -->
+        <article class="card-hover p-6 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 flex flex-col">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="text-xl font-bold">
+              <!-- TODO -->Auth Practice App
+            </h3>
+            <span class="text-xs font-mono text-[#4c8d9a] dark:text-gray-500 whitespace-nowrap mt-1.5">In progress</span>
+          </div>
+
+          <p class="text-[#4c8d9a] dark:text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+            <!-- TODO -->
+            A small CRUD app with sign-up and login. Learning why passwords are
+            hashed instead of encrypted, and what a session actually stores.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="pill pill-sm">Express</span>
+            <span class="pill pill-sm">bcrypt</span>
+            <span class="pill pill-sm">PostgreSQL</span>
+          </div>
+
+          <div class="flex flex-wrap gap-4 text-sm font-semibold">
+            <a href="https://github.com/doheonrick" target="_blank" rel="noreferrer"
+               class="text-primary hover:underline">GitHub →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================== SKILLS ================== -->
+    <section class="py-12 sm:py-16 bg-primary/5 dark:bg-white/[0.03] rounded-3xl p-8 sm:p-10" id="skills">
       <h2 class="text-3xl font-bold mb-10">Skills / Tech Stack</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
         <div class="space-y-8">
           <div>
             <h4 class="text-sm font-bold uppercase tracking-widest text-[#4c8d9a] mb-4">Frontend</h4>
@@ -180,7 +313,7 @@
             <div class="flex flex-wrap gap-2">
               <span class="pill">Node.js</span>
               <span class="pill">Express</span>
-              <span class="pill learning">Learning: APIs / REST basics</span>
+              <span class="pill learning">Learning: REST / APIs</span>
             </div>
           </div>
         </div>
@@ -207,110 +340,114 @@
       </div>
     </section>
 
-    <!-- Timeline -->
+    <!-- ================== TIMELINE ================== -->
+    <!-- ✅ 수정: 각 <details>에 'group' 클래스 추가 (없으면 group-open: 이 작동 안 함)
+         ✅ 수정: 아이콘 '+' → 'expand_more' (Material Symbols는 아이콘 '이름'을 넣어야 함) -->
     <section class="py-12 sm:py-16 timeline" id="timeline">
-        <h2 class="text-3xl font-bold mb-10 px-2">Timeline</h2>
-    
-        <div class="space-y-4 px-2">
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">1999</span>
-                <span class="text-lg font-bold">Born (Seoul, KR)</span>
+      <h2 class="text-3xl font-bold mb-10 px-2">Timeline</h2>
+
+      <div class="space-y-4 px-2">
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">Present</span>
+              <span class="text-lg font-bold">University of Texas at Dallas (CS), TX</span>
             </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">April 2, 1999.</p>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Continuing CS studies with a focus on building reliable web products.</p>
         </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2007 ~ 2011</span>
-                <span class="text-lg font-bold">Early years (KR / US)</span>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2023 ~ 2025</span>
+              <span class="text-lg font-bold">Austin Community College (CS), TX</span>
             </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <ul class="mt-4 text-[#4c8d9a] dark:text-gray-400 space-y-2">
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Built CS fundamentals and prepared for transfer.</p>
+        </details>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2022 ~ 2023</span>
+              <span class="text-lg font-bold">Startup (Expaedu)</span>
+            </div>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Worked at Expaedu, explored product thinking.</p>
+        </details>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2019 ~ 2022</span>
+              <span class="text-lg font-bold">Military Service, KR</span>
+            </div>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Staff Sergeant. Built discipline and leadership through service.</p>
+        </details>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2018 ~ 2019</span>
+              <span class="text-lg font-bold">Ritsumeikan APU (International Business), JP</span>
+            </div>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Attended 2018–2019; withdrew.</p>
+        </details>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2012 ~ 2017</span>
+              <span class="text-lg font-bold">Dream School (Seosan, KR)</span>
+            </div>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Middle and high school years in Seosan-si.</p>
+        </details>
+
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">2007 ~ 2011</span>
+              <span class="text-lg font-bold">Early years (KR / US)</span>
+            </div>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <ul class="mt-4 text-[#4c8d9a] dark:text-gray-400 space-y-2">
             <li>2007–2008: Yale Elementary (Seoul, KR)</li>
             <li>2008–2009: Crescent Heights Elementary (Washington, USA)</li>
             <li>2009–2011: Yuldong Elementary (Gyeonggi-do, KR)</li>
-            </ul>
-        </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2012 ~ 2017</span>
-                <span class="text-lg font-bold">Dream School (Seosan, KR)</span>
-            </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Middle, High school years in Seosan-si.</p>
+          </ul>
         </details>
 
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2018 ~ 2019</span>
-                <span class="text-lg font-bold">Ritsumeikan Asia Pacific University (International Business), JP</span>
+        <details class="group card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
+          <summary class="cursor-pointer flex items-center justify-between gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[12ch_1fr] sm:items-center gap-1 sm:gap-4">
+              <span class="font-mono text-primary text-base whitespace-nowrap">1999</span>
+              <span class="text-lg font-bold">Born (Seoul, KR)</span>
             </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Attended 2018–2019; withdrew.</p>
+            <span class="material-symbols-outlined shrink-0 transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">April 2, 1999.</p>
         </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2019 ~ 2022</span>
-                <span class="text-lg font-bold">Military Service, KR</span>
-            </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Staff Sergeant. Built discipline and leadership through service.</p>
-        </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2022 ~ 2023</span>
-                <span class="text-lg font-bold">Startup Business</span>
-            </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Worked at Expaedu, explored product thinking.</p>
-        </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">2023 ~ 2025</span>
-                <span class="text-lg font-bold">Austin Community College (CS), TX</span>
-            </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Built CS fundamentals and prepared for transfer.</p>
-        </details>
-    
-        <details class="card-hover border border-[#cfe3e7] dark:border-white/10 bg-white dark:bg-white/5 p-6">
-            <summary class="cursor-pointer flex items-center justify-between">
-            <div class="grid grid-cols-[12ch_1fr] items-center gap-4">
-                <span class="font-mono text-primary text-base whitespace-nowrap">Present</span>
-                <span class="text-lg font-bold">University of Texas at Dallas (CS), TX</span>
-            </div>
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">+</span>
-            </summary>
-            <p class="mt-4 text-[#4c8d9a] dark:text-gray-400">Continuing CS studies with a focus on building reliable web products.</p>
-        </details>
-        </div>
+
+      </div>
     </section>
 
-    <!-- Beyond -->
+    <!-- ================== BEYOND ================== -->
     <section class="py-12 sm:py-16" id="beyond">
-    <h2 class="text-3xl font-bold mb-10 px-2">Beyond Coding</h2>
-  
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-2">
+      <h2 class="text-3xl font-bold mb-10 px-2">Beyond Coding</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-2">
         <div class="card-hover p-8 bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10">
           <div class="bg-primary/20 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
             <span class="material-symbols-outlined text-primary text-3xl">equalizer</span>
@@ -336,287 +473,67 @@
         </div>
       </div>
     </section>
-    
-    <!-- Photo Dump (Square carousel: 4 visible, move 1 at a time, infinite loop, arrows + drag) -->
-    <section class="py-12 sm:py-16" id="photos">
-        <h2 class="text-3xl font-bold mb-10 px-2">Photo Dump</h2>
-    
-        <div class="px-2">
-        <div class="relative">
-    
-            <!-- Left button -->
-            <button
-            type="button"
-            class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition"
-            aria-label="Previous"
-            data-carousel-prev
-            >
-            <span class="text-xl font-bold">&lt;</span>
-            </button>
-    
-            <!-- Right button -->
-            <button
-            type="button"
-            class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition"
-            aria-label="Next"
-            data-carousel-next
-            >
-            <span class="text-xl font-bold">&gt;</span>
-            </button>
-    
-            <!-- Viewport -->
-            <div class="overflow-hidden select-none" data-carousel-viewport>
-            <!-- Track -->
-            <div class="flex gap-4 will-change-transform transition-transform duration-300 ease-out" data-carousel-track>
-    
-                <!-- Items (square thumbnails) -->
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/88/6f/82/886f82c8238e0a6b3e017fcfe0023618.jpg">
-                </div>
-    
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/c9/f7/18/c9f718683932276d341d6911a9a1099a.jpg">
-                </div>
-    
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/b1/19/29/b11929e5c26c0bd4d054d465d94cd240.jpg">
-                </div>
-    
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/d5/19/02/d519027d6a5474e372e0f3d4b7ba1044.jpg">
-                </div>
-    
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/29/e2/da/29e2da4631140a1279fb64716b7a868b.jpg">
-                </div>
-    
-                <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <img class="w-full h-full object-cover" alt="Photo" src="https://i.pinimg.com/736x/72/6c/d8/726cd8fedc53f3ba1a3fb4f48936434e.jpg">
-                </div>
-    
-            </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    
-    <style>
-        /* 4 visible items + 3 gaps(1rem each) => each item width is calc((100% - 3rem) / 4) */
-        .carousel-item
-        {
-          aspect-ratio: 1 / 1;
-        }
-      
-        /* mobile: 1 item */
-        .carousel-item
-        {
-          width: 100%;
-        }
-      
-        /* sm: 2 items (gap 1rem => 16px, 1 gap) */
-        @media (min-width: 640px)
-        {
-          .carousel-item
-          {
-            width: calc((100% - 1rem) / 2);
-          }
-        }
-      
-        /* lg: 4 items (gap 1rem, 3 gaps) */
-        @media (min-width: 1024px)
-        {
-          .carousel-item
-          {
-            width: calc((100% - 3rem) / 4);
-          }
-        }
-    </style>
-    
-    <script>
-        (function ()
-        {
-          const viewport = document.querySelector("[data-carousel-viewport]");
-          const track = document.querySelector("[data-carousel-track]");
-          const btnPrev = document.querySelector("[data-carousel-prev]");
-          const btnNext = document.querySelector("[data-carousel-next]");
-        
-          if (!viewport || !track) return;
-        
-          const GAP_PX = 16; // gap-4
-        
-          function getVisible()
-          {
-            const w = window.innerWidth;
-            if (w >= 1024) return 4;   // lg+
-            if (w >= 640) return 2;    // sm+
-            return 1;                  // mobile
-          }
-        
-          function setup()
-          {
-            // reset track to originals only
-            const all = Array.from(track.children);
-            all.forEach(function (n)
-            {
-              if (n.dataset.clone === "1") n.remove();
-            });
-        
-            const originals = Array.from(track.children);
-            const total = originals.length;
-            if (total === 0) return;
-        
-            const visible = getVisible();
-        
-            // remove old clones if any
-            originals.forEach(function (n) { n.dataset.clone = ""; });
-        
-            // clone edges
-            const headClones = originals.slice(0, visible).map(function (node)
-            {
-              const c = node.cloneNode(true);
-              c.dataset.clone = "1";
-              return c;
-            });
-        
-            const tailClones = originals.slice(-visible).map(function (node)
-            {
-              const c = node.cloneNode(true);
-              c.dataset.clone = "1";
-              return c;
-            });
-        
-            tailClones.forEach(function (n) { track.insertBefore(n, track.firstChild); });
-            headClones.forEach(function (n) { track.appendChild(n); });
-        
-            const items = Array.from(track.children);
-        
-            function itemStepPx()
-            {
-              const w = items[0].getBoundingClientRect().width;
-              return w + GAP_PX;
-            }
-        
-            let index = visible;
-        
-            function setTransform(x, animate)
-            {
-              if (!animate) track.classList.remove("transition-transform", "duration-300", "ease-out");
-              else track.classList.add("transition-transform", "duration-300", "ease-out");
-        
-              track.style.transform = "translateX(" + x + "px)";
-            }
-        
-            function render(animate)
-            {
-              setTransform(-index * itemStepPx(), animate);
-            }
-        
-            track.ontransitionend = function ()
-            {
-              if (index >= visible + total)
-              {
-                index = visible;
-                render(false);
-              }
-        
-              if (index < visible)
-              {
-                index = visible + total - 1;
-                render(false);
-              }
-            };
-        
-            function next() { index += 1; render(true); }
-            function prev() { index -= 1; render(true); }
-        
-            if (btnNext) btnNext.onclick = next;
-            if (btnPrev) btnPrev.onclick = prev;
-        
-            render(false);
-        
-            // drag/swipe (reuse your logic, but with current index/render)
-            let dragging = false;
-            let startX = 0;
-            let startTranslate = 0;
-        
-            function currentTranslateX()
-            {
-              const m = window.getComputedStyle(track).transform;
-              if (!m || m === "none") return 0;
-              const match = m.match(/matrix\((.+)\)/);
-              if (!match) return 0;
-              const parts = match[1].split(",").map(function (v) { return parseFloat(v); });
-              return parts[4] || 0;
-            }
-        
-            viewport.onpointerdown = function (e)
-            {
-              dragging = true;
-              viewport.setPointerCapture(e.pointerId);
-              startX = e.clientX;
-              startTranslate = currentTranslateX();
-              track.classList.remove("transition-transform", "duration-300", "ease-out");
-            };
-        
-            viewport.onpointermove = function (e)
-            {
-              if (!dragging) return;
-              const dx = e.clientX - startX;
-              setTransform(startTranslate + dx, false);
-            };
-        
-            viewport.onpointerup = function (e)
-            {
-              if (!dragging) return;
-              dragging = false;
-        
-              const dx = e.clientX - startX;
-              const threshold = itemStepPx() * 0.2;
-        
-              if (dx < -threshold) next();
-              else if (dx > threshold) prev();
-              else render(true);
-            };
-        
-            viewport.onpointercancel = function () { dragging = false; render(true); };
-          }
-        
-          // initial
-          setup();
-        
-          // rebuild on resize (because visible changes)
-          let t = null;
-          window.addEventListener("resize", function ()
-          {
-            clearTimeout(t);
-            t = setTimeout(function () { setup(); }, 150);
-          });
-        })();
-        </script>
 
-    <!-- Contact -->
+    <!-- ================== PHOTO DUMP ================== -->
+    <!-- ✅ 수정: 안에 있던 <style>과 <script>를 각각 styles.css / 문서 하단으로 이동 -->
+    <section class="py-12 sm:py-16" id="photos">
+      <h2 class="text-3xl font-bold mb-10 px-2">Photo Dump</h2>
+
+      <div class="px-2">
+        <div class="relative">
+
+          <button type="button" data-carousel-prev aria-label="Previous photo"
+            class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition">
+            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+          </button>
+
+          <button type="button" data-carousel-next aria-label="Next photo"
+            class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 dark:bg-black/60 border border-black/10 dark:border-white/10 shadow flex items-center justify-center hover:scale-105 transition">
+            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+          </button>
+
+          <div class="overflow-hidden select-none" data-carousel-viewport>
+            <div class="flex gap-4 will-change-transform" data-carousel-track>
+
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/88/6f/82/886f82c8238e0a6b3e017fcfe0023618.jpg">
+              </div>
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/c9/f7/18/c9f718683932276d341d6911a9a1099a.jpg">
+              </div>
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/b1/19/29/b11929e5c26c0bd4d054d465d94cd240.jpg">
+              </div>
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/d5/19/02/d519027d6a5474e372e0f3d4b7ba1044.jpg">
+              </div>
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/29/e2/da/29e2da4631140a1279fb64716b7a868b.jpg">
+              </div>
+              <div class="flex-none carousel-item rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
+                <img class="w-full h-full object-cover" alt="Photo" loading="lazy" src="https://i.pinimg.com/736x/72/6c/d8/726cd8fedc53f3ba1a3fb4f48936434e.jpg">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== CONTACT ================== -->
     <footer class="py-20 border-t border-[#e7f1f3] dark:border-white/10" id="contact">
       <div class="flex flex-col items-center text-center px-2">
-        <h2 class="text-4xl font-bold mb-10 px-2">Contact</h2>
-
-        <div class="flex flex-wrap gap-6 justify-center mb-8">
-          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
-             href="mailto:rlaehgjs@gmail.com">
-            Email
-          </a>
-          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
-             href="https://www.linkedin.com/in/do-heon-kim" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a class="card-hover contact-btn px-6 py-3 rounded-lg"
-             href="https://github.com/doheonrick" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
+        <h2 class="text-4xl font-bold mb-8">Contact</h2>
 
         <p class="text-[#4c8d9a] dark:text-gray-400 mb-10 max-w-md">
-            Feel free to reach out for questions, or opportunities.
+          Feel free to reach out for questions or opportunities.
         </p>
+
+        <div class="flex flex-wrap gap-4 sm:gap-6 justify-center mb-8">
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg" href="mailto:rlaehgjs@gmail.com">Email</a>
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg" href="https://www.linkedin.com/in/do-heon-kim" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="card-hover contact-btn px-6 py-3 rounded-lg" href="https://github.com/doheonrick" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
 
         <div class="mt-12 text-sm text-[#4c8d9a] dark:text-gray-500">
           © 2026 Do Heon Kim
@@ -625,27 +542,174 @@
     </footer>
 
   </main>
-    <script>
-        (function ()
-        {
-        const btn = document.querySelector("[data-mobile-menu-btn]");
-        const menu = document.querySelector("[data-mobile-menu]");
-        if (!btn || !menu) return;
-    
-        btn.addEventListener("click", function ()
-        {
-            menu.classList.toggle("hidden");
+
+  <!-- ================== SCRIPTS ================== -->
+  <!-- ✅ 수정: 모든 스크립트를 </body> 직전에 모음 -->
+
+  <!-- 다크모드 토글 -->
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+
+      btn.addEventListener("click", function () {
+        root.classList.toggle("dark");
+        localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+      });
+    })();
+  </script>
+
+  <!-- 모바일 메뉴 -->
+  <script>
+    (function () {
+      const btn = document.querySelector("[data-mobile-menu-btn]");
+      const menu = document.querySelector("[data-mobile-menu]");
+      if (!btn || !menu) return;
+
+      function toggle(open) {
+        menu.classList.toggle("hidden", !open);
+        btn.setAttribute("aria-expanded", String(open));
+      }
+
+      btn.addEventListener("click", function () {
+        toggle(menu.classList.contains("hidden"));
+      });
+
+      // 링크 누르면 메뉴 닫기
+      menu.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () { toggle(false); });
+      });
+    })();
+  </script>
+
+  <!-- 캐러셀 -->
+  <script>
+    (function () {
+      const viewport = document.querySelector("[data-carousel-viewport]");
+      const track = document.querySelector("[data-carousel-track]");
+      const btnPrev = document.querySelector("[data-carousel-prev]");
+      const btnNext = document.querySelector("[data-carousel-next]");
+      if (!viewport || !track) return;
+
+      const GAP_PX = 16; // gap-4 = 1rem = 16px
+
+      function getVisible() {
+        const w = window.innerWidth;
+        if (w >= 1024) return 4;
+        if (w >= 640) return 2;
+        return 1;
+      }
+
+      function setup() {
+        // 이전에 만든 복제본 제거
+        Array.from(track.children).forEach(function (n) {
+          if (n.dataset.clone === "1") n.remove();
         });
-    
-        // close on link click
-        menu.querySelectorAll("a").forEach(function (a)
-        {
-            a.addEventListener("click", function ()
-            {
-            menu.classList.add("hidden");
-            });
+
+        const originals = Array.from(track.children);
+        const total = originals.length;
+        if (total === 0) return;
+
+        const visible = getVisible();
+
+        // 무한 루프용: 앞뒤에 복제본을 붙임
+        const headClones = originals.slice(0, visible).map(function (node) {
+          const c = node.cloneNode(true);
+          c.dataset.clone = "1";
+          return c;
         });
-        })();
-    </script>
+        const tailClones = originals.slice(-visible).map(function (node) {
+          const c = node.cloneNode(true);
+          c.dataset.clone = "1";
+          return c;
+        });
+
+        tailClones.forEach(function (n) { track.insertBefore(n, track.firstChild); });
+        headClones.forEach(function (n) { track.appendChild(n); });
+
+        const items = Array.from(track.children);
+
+        function itemStepPx() {
+          return items[0].getBoundingClientRect().width + GAP_PX;
+        }
+
+        let index = visible;
+
+        function setTransform(x, animate) {
+          track.style.transition = animate ? "transform 300ms ease-out" : "none";
+          track.style.transform = "translateX(" + x + "px)";
+        }
+
+        function render(animate) {
+          setTransform(-index * itemStepPx(), animate);
+        }
+
+        // 복제본 끝에 도달하면 애니메이션 없이 원본 위치로 순간이동
+        track.ontransitionend = function () {
+          if (index >= visible + total) { index = visible; render(false); }
+          if (index < visible) { index = visible + total - 1; render(false); }
+        };
+
+        function next() { index += 1; render(true); }
+        function prev() { index -= 1; render(true); }
+
+        if (btnNext) btnNext.onclick = next;
+        if (btnPrev) btnPrev.onclick = prev;
+
+        render(false);
+
+        // 드래그 / 스와이프
+        let dragging = false;
+        let startX = 0;
+        let startTranslate = 0;
+
+        function currentTranslateX() {
+          const m = window.getComputedStyle(track).transform;
+          if (!m || m === "none") return 0;
+          const match = m.match(/matrix\((.+)\)/);
+          if (!match) return 0;
+          return parseFloat(match[1].split(",")[4]) || 0;
+        }
+
+        viewport.onpointerdown = function (e) {
+          dragging = true;
+          viewport.setPointerCapture(e.pointerId);
+          startX = e.clientX;
+          startTranslate = currentTranslateX();
+          track.style.transition = "none";
+        };
+
+        viewport.onpointermove = function (e) {
+          if (!dragging) return;
+          setTransform(startTranslate + (e.clientX - startX), false);
+        };
+
+        viewport.onpointerup = function (e) {
+          if (!dragging) return;
+          dragging = false;
+
+          const dx = e.clientX - startX;
+          const threshold = itemStepPx() * 0.2;
+
+          if (dx < -threshold) next();
+          else if (dx > threshold) prev();
+          else render(true);
+        };
+
+        viewport.onpointercancel = function () { dragging = false; render(true); };
+      }
+
+      setup();
+
+      // 화면 크기가 바뀌면 보이는 개수가 달라지므로 다시 구성
+      let t = null;
+      window.addEventListener("resize", function () {
+        clearTimeout(t);
+        t = setTimeout(setup, 150);
+      });
+    })();
+  </script>
+
 </body>
 </html>
