@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Resume | Do Heon Kim</title>
+  <meta name="description" content="Resume of Do Heon Kim - CS student at UT Dallas." />
+
+  <!-- ✅ 수정: index.html과 동일한 다크모드 초기화 (없으면 페이지 이동 시 테마가 풀림) -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link rel="stylesheet" href="styles.css" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700" rel="stylesheet"/>
 
   <script>
     tailwind.config = {
@@ -21,9 +29,7 @@
             "background-light": "#f6f8f8",
             "background-dark": "#101f22",
           },
-          fontFamily: {
-            "display": ["Inter", "sans-serif"]
-          },
+          fontFamily: { "display": ["Inter", "sans-serif"] },
           borderRadius: {
             "DEFAULT": "0.25rem",
             "lg": "0.5rem",
@@ -35,28 +41,33 @@
     }
   </script>
 
-  <style>
-    body { font-family: "Inter", sans-serif; }
-    .material-symbols-outlined {
-      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-[#0d191b] dark:text-white transition-colors duration-300">
-    <nav class="sticky top-0 z-50 w-full border-b border-[#e7f1f3] dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-        <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center">
-          <a
-            href="index.html"
-            class="inline-flex items-center gap-2 rounded-full border border-[#d7e6ea] dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-2 text-sm font-medium text-[#0d191b] dark:text-white transition hover:bg-white hover:border-[#b9d7de] dark:hover:bg-white/10"
-          >
-            <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-            <span>Back to Home</span>
-          </a>
-        </div>
-      </nav>
+
+  <nav class="sticky top-0 z-50 w-full border-b border-[#e7f1f3] dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-6 h-16 flex items-center gap-3">
+      <a href="index.html"
+        class="inline-flex items-center gap-2 rounded-full border border-[#d7e6ea] dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-2 text-sm font-medium transition hover:bg-white hover:border-[#b9d7de] dark:hover:bg-white/10">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        <span>Back to Home</span>
+      </a>
+
+      <!-- ✅ 수정: 이 페이지에도 다크모드 토글 추가 -->
+      <button type="button" data-theme-toggle
+        class="ml-auto inline-flex items-center justify-center rounded-lg border border-black/10 dark:border-white/10 w-10 h-10 hover:bg-black/5 dark:hover:bg-white/10 transition"
+        aria-label="Toggle dark mode">
+        <span class="material-symbols-outlined text-[20px] dark:hidden">dark_mode</span>
+        <span class="material-symbols-outlined text-[20px] hidden dark:inline">light_mode</span>
+      </button>
+    </div>
+  </nav>
 
   <main class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
     <section class="mb-10">
       <h1 class="text-4xl sm:text-5xl font-bold mb-4">Resume</h1>
       <p class="text-[#4c8d9a] dark:text-gray-400 text-base sm:text-lg">
@@ -66,32 +77,47 @@
 
     <section class="bg-white dark:bg-white/5 border border-[#cfe3e7] dark:border-white/10 rounded-2xl p-4 sm:p-6 shadow-sm">
       <div class="flex flex-wrap gap-4 mb-6">
-        <a
-          href="assets/Do_Heon_Kim_s_Resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-          class="contact-btn px-6 py-3 rounded-lg"
-        >
-          Open Resume
+        <a href="assets/Do_Heon_Kim_s_Resume.pdf" target="_blank" rel="noreferrer"
+          class="contact-btn px-6 py-3 rounded-lg">
+          Open in new tab
         </a>
-
-        <a
-          href="assets/Do_Heon_Kim_s_Resume.pdf"
-          download
-          class="contact-btn px-6 py-3 rounded-lg"
-        >
-          Download Resume
+        <a href="assets/Do_Heon_Kim_s_Resume.pdf" download
+          class="contact-btn px-6 py-3 rounded-lg">
+          Download PDF
         </a>
       </div>
 
-      <div class="rounded-xl overflow-hidden border border-[#cfe3e7] dark:border-white/10 bg-white">
+      <!-- ✅ 수정: 모바일에서 PDF iframe이 거의 안 보이는 문제.
+           높이를 뷰포트 기준으로 잡고, 모바일에서는 iframe 대신
+           안내 문구가 보이도록 fallback을 넣음 -->
+      <div class="hidden sm:block rounded-xl overflow-hidden border border-[#cfe3e7] dark:border-white/10 bg-white">
         <iframe
           src="assets/Do_Heon_Kim_s_Resume.pdf"
           title="Do Heon Kim Resume"
-          class="w-full h-[900px]"
-        ></iframe>
+          class="w-full h-[80vh] min-h-[600px]">
+        </iframe>
       </div>
+
+      <p class="sm:hidden text-sm text-[#4c8d9a] dark:text-gray-400 text-center py-8">
+        PDF preview isn't available on small screens.<br>
+        Use the buttons above to open or download it.
+      </p>
     </section>
+
   </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.querySelector("[data-theme-toggle]");
+      if (!btn) return;
+
+      btn.addEventListener("click", function () {
+        root.classList.toggle("dark");
+        localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+      });
+    })();
+  </script>
+
 </body>
 </html>
