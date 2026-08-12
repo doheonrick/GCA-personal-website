@@ -1,154 +1,203 @@
-/* styles.css - custom CSS layered on top of Tailwind */
+/* ============================================================
+   styles.css — Tailwind 위에 얹는 커스텀 CSS
+   ============================================================ */
 
-/* ===== Theme tokens ===== */
+/* ===== 테마 토큰 ===== */
 :root {
-    --accent: #13c8ec;
-    --bg: #f6f8f8;
-    --text: #0d191b;
-    --muted: #4c8d9a;
-    --border: #cfe3e7;
-    --radius: 16px;
-    --shadow: 0 10px 30px rgba(13, 25, 27, 0.08);
+  --accent: #13c8ec;
+  --bg: #f6f8f8;
+  --text: #0d191b;
+  --muted: #4c8d9a;
+  --border: #cfe3e7;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(13, 25, 27, 0.08);
+}
+
+/* ✅ 수정: 다크모드용 토큰 추가.
+   전에는 :root 값만 있어서 다크모드에서 .pill 배경 같은 게 흰색으로 남았음 */
+html.dark {
+  --bg: #101f22;
+  --text: #ffffff;
+  --muted: #9db4ba;
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== 기본 ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ✅ 수정: section:target 의 파란 띠를 제거하고,
+   scroll-margin-top 만 전역으로 적용.
+   → sticky nav(h-16=64px)에 제목이 가리는 문제도 같이 해결됨.
+   → 이제 #about { ... !important } 같은 땜빵이 필요 없음 */
+section,
+footer {
+  scroll-margin-top: 88px;
+}
+
+/* ===== 키보드 포커스 (접근성) ===== */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent), transparent 50%);
+  outline-offset: 3px;
+}
+
+/* ===== Hero 배경 =====
+   ✅ 수정: HTML의 인라인 style을 여기로 옮김.
+   TODO: 언젠가 이 이미지가 사라질 수 있으니
+         assets/hero.jpg 로 받아두고 URL만 바꾸는 걸 추천 */
+.hero-bg {
+  background-image:
+    linear-gradient(rgba(16, 31, 34, 0.82), rgba(16, 31, 34, 0.82)),
+    url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0Zu-5ZuNvZryahS30g6QXWGT36pgCdl_2ClChvUvyeBURMucA10XShJR-pE153Deg5KCMIurU382hHzjy5oentVuuLouVOeprBhCESWeJMM7RxDBrcDopcplC7GcwqDljrpEdVQt7q4FJefUBw0vDZHWrG4prOBwHAfsDBJmldXAmTpAOfTrSnov68SjHZRxCjEREj1Y8kCRib6hVJJ77A1LP0teXmzN7aNzmgCBKNuEeqxoyCe-EDtflHdKuWfo54hfYwFInRlA");
+}
+
+/* ===== 네비 밑줄 애니메이션 ===== */
+.underline-anim {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline-anim::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+  opacity: 0.9;
+}
+
+.underline-anim:hover::after,
+.underline-anim:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ===== 카드 호버 ===== */
+.card-hover {
+  border-radius: var(--radius);
+  transition: transform 200ms ease, box-shadow 200ms ease,
+              border-color 200ms ease, background-color 200ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--accent), var(--border) 60%);
+}
+
+/* ===== Pill (스킬 태그) ===== */
+.pill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent), white 92%);
+}
+
+/* ✅ 신규: Projects 카드 안에서 쓰는 작은 pill */
+.pill-sm {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+}
+
+.pill.learning {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--accent), var(--border) 55%);
+  background: transparent;
+}
+
+/* ✅ 수정: 다크모드에서 pill이 흰 배경으로 튀던 문제 */
+html.dark .pill {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+html.dark .pill:hover {
+  background: color-mix(in srgb, var(--accent), transparent 80%);
+}
+
+html.dark .pill.learning {
+  background: transparent;
+}
+
+/* ===== Timeline ===== */
+.timeline details summary {
+  list-style: none;
+}
+
+.timeline details summary::-webkit-details-marker {
+  display: none;
+}
+
+.timeline details[open] {
+  border-color: color-mix(in srgb, var(--accent), var(--border) 70%);
+}
+
+/* ===== Contact 버튼 ===== */
+.contact-btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #0b1416;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.contact-btn:hover {
+  background-color: #10b4d4;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(13, 25, 27, 0.25);
+}
+
+/* ===== 캐러셀 =====
+   ✅ 수정: index.html 안에 있던 <style>을 여기로 옮김
+   4개 보일 때: 아이템 4개 + 간격(1rem) 3개 = 100%
+   → 아이템 하나 = (100% - 3rem) / 4 */
+.carousel-item {
+  aspect-ratio: 1 / 1;
+  width: 100%; /* 모바일: 1개 */
+}
+
+@media (min-width: 640px) {
+  .carousel-item {
+    width: calc((100% - 1rem) / 2); /* 2개 */
   }
-  
-  /* ===== Base ===== */
-  html { scroll-behavior: smooth; }
-  
-  body {
-    background: var(--bg);
-    color: var(--text);
+}
+
+@media (min-width: 1024px) {
+  .carousel-item {
+    width: calc((100% - 3rem) / 4); /* 4개 */
   }
-  
-  /* ===== Accessibility focus ===== */
-  :focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--accent), transparent 60%);
-    outline-offset: 3px;
+}
+
+/* ===== 모션 최소화 설정 존중 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
   }
-  
-  /* About 섹션만 파란 배경/띠 제거 */
-  #about {
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    background: transparent !important;
-  }
-  
-  /* ===== Nav underline animation ===== */
-  .underline-anim {
-    position: relative;
-    text-decoration: none;
-  }
-  .underline-anim::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 200ms ease;
-    opacity: 0.9;
-  }
-  .underline-anim:hover::after,
-  .underline-anim:focus-visible::after {
-    transform: scaleX(1);
-  }
-  
-  /* ===== Section highlight when jumped via anchors ===== */
-  section:target,
-  footer:target {
-    scroll-margin-top: 90px;
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 85%);
-    border-radius: var(--radius);
-  }
-  
-  /* ===== Unified card hover ===== */
-  .card-hover {
-    border-radius: var(--radius);
-    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-    border-color: color-mix(in srgb, var(--accent), var(--border) 60%);
-  }
-  
-  /* ===== Pills (skills tags) ===== */
-  .pill {
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.75);
-    transition: transform 160ms ease, background-color 160ms ease;
-  }
-  .pill:hover {
-    transform: translateY(-2px);
-    background: color-mix(in srgb, var(--accent), white 92%);
-  }
-  .pill.learning {
-    border-style: dashed;
-    border-color: color-mix(in srgb, var(--accent), var(--border) 55%);
-    background: transparent;
-  }
-  
-  /* ===== Photo hover caption ===== */
-  .photo-tile {
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .photo-caption {
-    transform: translateY(8px);
-    transition: opacity 200ms ease, transform 200ms ease;
-  }
-  .photo-tile:hover .photo-caption {
-    opacity: 1 !important;
-    transform: translateY(0);
-  }
-  
-  /* ===== Timeline details (small polish) ===== */
-  .timeline details summary {
-    list-style: none;
-  }
-  .timeline details summary::-webkit-details-marker {
-    display: none;
-  }
-  .timeline details[open] {
-    border-color: color-mix(in srgb, var(--accent), var(--border) 70%);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 88%);
-  }
-  
-  /* ===== Contact buttons ===== */
-  .contact-btn {
-    background-color: var(--accent);   /* basic background */
-    font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 550;
-    letter-spacing: 0.03em;
-  }
-  
-  .contact-btn:hover {
-    background-color: #10b4d4;        
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(13, 25, 27, 0.25);
-  }
-  
-  /* Dark mode */
-  .dark .contact-btn {
-    background-color: var(--accent);
-    color: #0b1416;
-  }
-  
-  .dark .contact-btn:hover {
-    background-color: #10b4d4;
-  }
-  /* ===== Reduce motion ===== */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      transition: none !important;
-      animation: none !important;
-      scroll-behavior: auto !important;
-    }
-  }
+}
